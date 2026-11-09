@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>myTomatoTimer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <button data-tab="stats" class="active">Stats</button>
+    <button data-tab="sessions">Sessions</button>
+    <button data-tab="subjects">Subjects</button>
+    <button data-tab="settings">Settings</button>
+  </nav>
+
+  <main>
+    <section id="stats">
+      <div class="cards">
+        <div class="card"><span class="label">Today</span><span class="big" id="today"></span>
+          <div class="bar"><div id="today-bar"></div></div><span class="sub" id="today-goal"></span></div>
+        <div class="card"><span class="label">This week</span><span class="big" id="week"></span>
+          <div class="bar"><div id="week-bar"></div></div><span class="sub" id="week-goal"></span></div>
+        <div class="card"><span class="label">Streak</span><span class="big" id="streak"></span>
+          <span class="sub">days in a row</span></div>
+      </div>
+
+      <h2>This week</h2>
+      <div class="chart-box"><canvas id="week-chart"></canvas></div>
+
+      <h2>Last 10 weeks</h2>
+      <div id="heatmap"></div>
+
+      <h2>Time per subject
+        <span class="seg">
+          <button data-range="week" class="active">This week</button>
+          <button data-range="10weeks">10 weeks</button>
+        </span>
+      </h2>
+      <div class="chart-box short"><canvas id="subject-chart"></canvas></div>
+      <p id="no-subjects" class="muted" hidden>No focus time in this range yet.</p>
+    </section>
+
+    <section id="sessions" hidden>
+      <div class="toolbar">
+        <button class="act" id="new-session">Add session</button>
+        <button class="act" id="export-csv">Export CSV…</button>
+      </div>
+      <form id="session-form" hidden>
+        <label>Subject <select id="sf-subject"></select></label>
+        <label>Start <input type="datetime-local" id="sf-start"></label>
+        <label>End <input type="datetime-local" id="sf-end"></label>
+        <label>Note <input type="text" id="sf-note" autocomplete="off"></label>
+        <div class="form-actions">
+          <button class="act">Save</button>
+          <button class="act" type="button" id="sf-cancel">Cancel</button>
+        </div>
+      </form>
+      <table id="session-table"><tbody></tbody></table>
+      <p id="no-sessions" class="muted" hidden>No sessions yet.</p>
+      <p class="muted">Manual sessions can be edited fully. Timer sessions keep their recorded times: only subject and note change.</p>
+    </section>
+
+    <section id="subjects" hidden>
+      <form id="add-subject">
+        <input id="new-subject" placeholder="New subject" autocomplete="off">
+        <button>Add</button>
+      </form>
+      <ul id="subject-list"></ul>
+      <p class="muted">Archived subjects are hidden from the menu bar but keep their history.</p>
+    </section>
+
+    <section id="settings" hidden>
+      <form id="settings-form"></form>
+      <p class="muted">Changes apply from the next session started in the menu bar.</p>
+    </section>
+
+    <p id="message" role="status"></p>
+  </main>
+
+  <script src="chart.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
