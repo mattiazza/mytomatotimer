@@ -73,7 +73,6 @@ Target: macOS Tahoe 26.x, Apple Silicon (M1 Pro). Python 3.11+ from Homebrew, ma
 - Not implemented yet from the spec: keep-awake power assertion (prevent idle sleep), lid-close/system-sleep ends the session, alert if display asleep. Their settings are hidden in the window until they exist.
 - Custom app icon (.icns): the bundle uses the default py2app icon.
 - Rebuild is manual (command in the decisions log); the app was copied to /Applications by hand, so a rebuild must be copied over again.
-- Nothing is committed to git yet.
 
 ## Decisions log
 - 2026-11-08: rumps for menu bar; separate-process pywebview window (option A); SQLite with epoch-UTC timestamps.
